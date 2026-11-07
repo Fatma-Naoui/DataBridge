@@ -1,0 +1,34 @@
+Message-ID: <15.c.2053323@mail.example>
+Date: Wed, 14 Feb 2024 20:52:00 +0100
+From: "Philippe Lambert" <philippelambert@hotmail.com>
+To: "Brabantia Klantendienst" <klantendienst@brabantia.example>
+Subject: Changement d'adresse
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="===============3174899127938039208=="
+
+--===============3174899127938039208==
+Content-Type: text/plain; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+
+Madame, Monsieur,
+
+J'ai d=C3=A9m=C3=A9nag=C3=A9 au Boulevard Tirou 56A, 9000 Gent. Pouvez-vous m=
+odifier mon adresse pour la police BR-AUTO-2023-819960 ? Mon IBAN est BE95 56=
+45 7192 8558. Vous pouvez me joindre au 0482/64.08.89.
+
+Bien =C3=A0 vous,
+Philippe
+
+--===============3174899127938039208==
+Content-Type: text/html; charset="utf-8"
+Content-Transfer-Encoding: quoted-printable
+MIME-Version: 1.0
+
+<html><body><p>Madame, Monsieur,</p><p>J'ai d=C3=A9m=C3=A9nag=C3=A9 au Boulev=
+ard Tirou 56A, 9000 Gent. Pouvez-vous modifier mon adresse pour la police BR-=
+AUTO-2023-819960 ? Mon IBAN est BE95 5645 7192 8558. Vous pouvez me joindre a=
+u 0482/64.08.89.</p><p>Bien =C3=A0 vous,
+Philippe</p></body></html>
+
+--===============3174899127938039208==--

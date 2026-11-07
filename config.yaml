@@ -1,0 +1,3 @@
+sources:
+  sql:
+    connection_string: "sqlite:///data/db/insurer.sqlite"
