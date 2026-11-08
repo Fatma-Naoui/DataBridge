@@ -1,7 +1,7 @@
 {
   "ingested_per_source": {
     "sql": 402,
-    "files": 18,
+    "files": 21,
     "email": 213
   },
   "failed_sources": [],
@@ -26,11 +26,11 @@
     "known_names": 101
   },
   "pii_replaced": {
-    "ADDRESS": 55,
+    "PERSON": 264,
+    "PHONE": 77,
+    "EMAIL": 99,
+    "ADDRESS": 56,
     "ORGANIZATION": 140,
-    "EMAIL": 96,
-    "PHONE": 74,
-    "PERSON": 259,
     "IBAN": 42,
     "NATIONAL_ID": 15
   },

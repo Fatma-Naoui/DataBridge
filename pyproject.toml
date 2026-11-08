@@ -17,6 +17,7 @@ dependencies = [
     "sentencepiece>=0.2.3",
     "spacy>=3.8.18",
     "sqlalchemy>=2.1.8",
+    "streamlit>=1.67.0",
     "tiktoken>=0.14.0",
 ]
 

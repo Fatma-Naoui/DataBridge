@@ -5,7 +5,7 @@
 | source | records |
 |---|---|
 | sql | 402 |
-| files | 18 |
+| files | 21 |
 | email | 213 |
 
 
@@ -34,13 +34,13 @@
 
 | type | count |
 |---|---|
-| ADDRESS | 55 |
-| EMAIL | 96 |
+| ADDRESS | 56 |
+| EMAIL | 99 |
 | IBAN | 42 |
 | NATIONAL_ID | 15 |
 | ORGANIZATION | 140 |
-| PERSON | 259 |
-| PHONE | 74 |
+| PERSON | 264 |
+| PHONE | 77 |
 
 
 ## Language distribution
