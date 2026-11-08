@@ -18,3 +18,22 @@ class RawDocument(BaseModel):
     content: str | bytes
     mime_type: str
     metadata: dict = Field(default_factory=dict)
+
+
+class Record(BaseModel):
+    """Parsed content moving through the pipeline."""
+
+    id: str
+    source_type: str
+    kind: str  # "doc" | "row" | "qa" | "message"
+    text: str = ""
+    question: str | None = None
+    answer: str | None = None
+    metadata: dict = Field(default_factory=dict)
+    language: str | None = None
+    domain: str | None = None
+    pii: dict[str, int] = Field(default_factory=dict)
+
+    @property
+    def body(self) -> str:
+        return self.text or f"{self.question or ''}\n{self.answer or ''}"

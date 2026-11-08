@@ -3,12 +3,26 @@ name = "databridge"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = [
+    "anthropic>=2.6.0",
+    "datasketch>=2.0.0",
+    "ftfy>=6.3.1",
+    "gliner>=0.2.30",
+    "lingua-language-detector>=2.2.0",
+    "protobuf>=7.36.2",
     "pydantic>=2.14.3",
+    "pypdf>=7.0.0",
+    "python-docx>=1.2.0",
+    "python-stdnum>=2.2",
+    "pyyaml>=6.0.3",
+    "sentencepiece>=0.2.3",
+    "spacy>=3.8.18",
     "sqlalchemy>=2.1.8",
+    "tiktoken>=0.14.0",
 ]
 
 [dependency-groups]
 dev = [
+    "pytest>=9.2.0",
     "ruff>=0.17.4",
 ]
 
@@ -28,3 +42,7 @@ select = [
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "space"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]

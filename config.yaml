@@ -1,3 +1,41 @@
+system_prompt: |
+  You are a helpful customer support assistant.
+  Answer clearly, accurately, and professionally.
+  Use the provided conversation context to answer the user's question.
+  If you do not know the answer, say so rather than inventing information.
+agent_domains:
+  - "@brabantia.example"
+
 sources:
-  sql:
+  - type: sql
     connection_string: "sqlite:///data/db/insurer.sqlite"
+
+  - type: files
+    directory: data/docs
+
+  - type: email
+    tickets_file: data/support/tickets.csv
+    emails_directory: data/support/emails
+
+sql_anonymization:
+  full_name_columns:
+    - customer_name
+    - contact_name
+    - policyholder_name
+    - full_name
+    - name
+  first_name_column: first_name
+  last_name_column: last_name
+
+anonymizer:
+  model_name: "urchade/gliner_multi_pii-v1"
+  threshold: 0.5
+  chunk_size: 1000
+  batch_size: 16
+  cache_size: 50000
+  record_batch_size: 500
+  skipwords: []
+
+dedup_threshold: 0.85
+eval_pct: 15
+output_dir: output
