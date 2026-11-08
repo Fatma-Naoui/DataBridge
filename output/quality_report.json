@@ -1,0 +1,61 @@
+{
+  "ingested_per_source": {
+    "sql": 402,
+    "files": 18,
+    "email": 213
+  },
+  "failed_sources": [],
+  "dropped": {
+    "files": {
+      "pdf_unreadable:PdfStreamError": 1,
+      "word_lock_file": 1,
+      "near_duplicate": 1
+    },
+    "email": {
+      "empty_after_cleaning": 6,
+      "near_duplicate": 10,
+      "exact_duplicate": 40,
+      "unpaired_thread": 2
+    }
+  },
+  "duplicates_removed": {
+    "exact": 40,
+    "near": 11
+  },
+  "sql_gazetteer": {
+    "known_names": 101
+  },
+  "pii_replaced": {
+    "ADDRESS": 52,
+    "EMAIL": 95,
+    "PHONE": 71,
+    "PERSON": 258,
+    "IBAN": 41,
+    "NATIONAL_ID": 30
+  },
+  "language_distribution": {
+    "nl": 68,
+    "fr": 41,
+    "en": 8
+  },
+  "domain_distribution": {
+    "policies": 40,
+    "billing": 14,
+    "claims": 32,
+    "general": 31
+  },
+  "split": {
+    "train": 99,
+    "eval": 18
+  },
+  "validation": {
+    "ok": true,
+    "counts": {
+      "train": 99,
+      "eval": 18
+    },
+    "pii_leaks": {},
+    "errors": [],
+    "warnings": []
+  }
+}

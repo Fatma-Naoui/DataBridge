@@ -18,7 +18,7 @@ IBAN_RE = re.compile(
     r"(?![A-Z0-9])",
     re.IGNORECASE,
 )
-
+BELGIAN_NATIONAL_ID_RE = re.compile(r"(?<!\d)\d{2}\.\d{2}\.\d{2}-\d{3}\.\d{2}(?!\d)")
 # Conservative phone detection:
 # requires a leading + or separators between digits.
 PHONE_RE = re.compile(
@@ -98,6 +98,8 @@ def find_remaining_pii(text: str) -> list[str]:
     """
 
     found = []
+    if BELGIAN_NATIONAL_ID_RE.search(text) or SSN_RE.search(text):
+        found.append("NATIONAL_ID")
 
     if EMAIL_RE.search(text):
         found.append("EMAIL")
@@ -115,9 +117,6 @@ def find_remaining_pii(text: str) -> list[str]:
         if is_valid_credit_card(match.group()):
             found.append("CREDIT_CARD")
             card_spans.append(match.span())
-
-    if SSN_RE.search(text):
-        found.append("NATIONAL_ID")
 
     for match in PHONE_RE.finditer(text):
         start, end = match.span()
@@ -148,7 +147,6 @@ class Anonymizer:
         "email",
         "phone number",
         "address",
-        "organization",
         "date of birth",
         "social security number",
         "credit card number",
@@ -160,7 +158,6 @@ class Anonymizer:
         "email": "EMAIL",
         "phone number": "PHONE",
         "address": "ADDRESS",
-        "organization": "ORGANIZATION",
         "date of birth": "NATIONAL_ID",
         "social security number": "NATIONAL_ID",
         "credit card number": "CREDIT_CARD",
@@ -282,6 +279,10 @@ class Anonymizer:
 
         add_matches(EMAIL_RE, "email")
         add_matches(IBAN_RE, "iban", is_valid_iban)
+        add_matches(
+            BELGIAN_NATIONAL_ID_RE,
+            "social security number",
+        )
 
         # Do not let phone matching replace part of an IBAN.
         iban_spans = [

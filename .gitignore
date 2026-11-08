@@ -22,5 +22,4 @@ Thumbs.db
 # Logs
 *.log
 data/streamlit_uploads/
-output/*
 !output/.gitkeep

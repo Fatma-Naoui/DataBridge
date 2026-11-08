@@ -13,7 +13,7 @@ The bundled sample data is a multilingual (Dutch / French / English) insurance s
 - **Text cleaning**: removes quoted replies, signatures, sign-offs, mobile footers and legal disclaimers (NL / FR / EN).
 - **PII anonymization**: combines three layers:
   - regex detection with checksum validation (IBAN via MOD-97, credit cards via Luhn), plus emails, phone numbers and national IDs;
-  - named entity recognition (NER) with the [GLiNER](https://github.com/urchade/GLiNER) multilingual PII model (`urchade/gliner_multi_pii-v1`) for names, addresses, organizations, etc. (see [Anonymization and NER](#anonymization-and-ner));
+  - named entity recognition (NER) with the [GLiNER](https://github.com/urchade/GLiNER) multilingual PII model (`urchade/gliner_multi_pii-v1`) for names, addresses, etc. (see [Anonymization and NER](#anonymization-and-ner));
   - a **name gazetteer built from your SQL data**, so known customer names are always caught.
 - **Deduplication**: exact (hash) and near-duplicate (MinHash LSH) removal, keeping the most recent version of a document.
 - **Tagging**: language (`nl`, `fr`, `en`) and domain (`claims`, `policies`, `billing`, `general`).
@@ -66,7 +66,6 @@ The NER model is asked for these labels, and each one is replaced by a placehold
 | `email` | `[EMAIL]` |
 | `phone number` | `[PHONE]` |
 | `address` | `[ADDRESS]` |
-| `organization` | `[ORGANIZATION]` |
 | `date of birth` | `[NATIONAL_ID]` |
 | `social security number` | `[NATIONAL_ID]` |
 | `passport number` | `[NATIONAL_ID]` |
@@ -256,7 +255,7 @@ Each line is a chat-format example with metadata:
 }
 ```
 
-PII is replaced with bracketed labels like `[PERSON]`, `[EMAIL]`, `[PHONE]`, `[IBAN]`, `[ADDRESS]`, `[ORGANIZATION]` and `[NATIONAL_ID]`.
+PII is replaced with bracketed labels like `[PERSON]`, `[EMAIL]`, `[PHONE]`, `[IBAN]`, `[ADDRESS]` and `[NATIONAL_ID]`.
 
 ### Quality report
 
@@ -286,7 +285,15 @@ Register a parser for its MIME type in `src/processing/parse.py`:
 @parser("text/html")
 def _html(raw, cfg):
     ...
-    return [Record(id=raw.id, source_type=raw.source_type, kind="doc", text=text, metadata=raw.metadata)]
+    return [
+        Record(
+            id=raw.id,
+            source_type=raw.source_type,
+            kind="doc",
+            text=text,
+            metadata=raw.metadata,
+        )
+    ]
 ```
 
 If the file connector should pick it up, also add the extension to `SUPPORTED_EXTENSIONS` and `MIME_TYPES` in `src/connectors/files.py`.
